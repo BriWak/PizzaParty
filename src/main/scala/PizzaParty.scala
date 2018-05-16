@@ -1,4 +1,4 @@
-object PizzaParty extends App {
+object PizzaParty{
 
   def apply(apprentices: Int, order: PizzaOrder) : String = {
 
@@ -7,7 +7,7 @@ object PizzaParty extends App {
     val pizzas = orderAsDecimals.sum.ceil.toInt
     val multiPizzas = if (pizzas > 1) "s" else ""
     val remainder = ((pizzas - orderAsDecimals.sum) * 8).toInt
-    val leftovers = if (remainder == 0 || remainder == 8) "no" else remainder
+    val leftovers = if (remainder == 0) "no" else remainder
     val nonPizzaEaters = apprentices - order.slices.length
     val pizzaHaters = if (nonPizzaEaters <= 0) "" else s" There are $nonPizzaEaters apprentices that don't want pizza!"
     s"To feed $apprentices hungry apprentice$moreThanOne, I need $pizzas pizza$multiPizzas. I have $leftovers leftover slices!$pizzaHaters"
@@ -15,4 +15,3 @@ object PizzaParty extends App {
 }
 
 case class PizzaOrder(slices: String*)
-
